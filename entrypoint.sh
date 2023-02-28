@@ -10,6 +10,7 @@ install_zip_dependencies(){
 	echo "Installing and zipping dependencies..."
 	mkdir python
 	pip install --target=python -r "${INPUT_REQUIREMENTS_TXT}"
+	rm -rf python/asyncio
 	zip -r dependencies.zip ./python
 }
 
