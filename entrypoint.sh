@@ -9,7 +9,7 @@ configure_aws_credentials(){
 install_zip_dependencies(){
 	echo "Installing and zipping dependencies..."
 	mkdir python
-	pip install --target=python -r "${INPUT_REQUIREMENTS_TXT}"
+	pip install --platform manylinux2014_x86_64 --target=python --implementation cp --python 3.9 --only-binary=:all: -r "${INPUT_REQUIREMENTS_TXT}"
 	rm -rf python/asyncio
 	zip -r dependencies.zip ./python
 }
